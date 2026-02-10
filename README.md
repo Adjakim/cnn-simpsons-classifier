@@ -219,7 +219,42 @@ Taille totale                      : 1 812,75 MB
 Dossiers                           : 92
 ================================================================================
 ```
+## 📦 Télécharger les Modèles
 
+⚠️ **Important :** Les modèles entraînés sont exclus du repository GitHub car trop volumineux (408 MB total).
+
+### 🔗 Téléchargement
+
+**Google Drive :** [Télécharger les 2 modèles](https://drive.google.com/drive/folders/1DOd2EU5Su5JaGTwIHaFspyNNHAYsj6dp?usp=sharing)
+
+Le dossier contient :
+- `cnn_scratch.keras` (220 MB) - CNN from scratch (89.86% accuracy)
+- `efficientnet_final.keras` (188 MB) - EfficientNetB0 (98.19% accuracy)
+
+### 📥 Installation des Modèles
+```bash
+# 1. Téléchargez les 2 fichiers depuis le lien Google Drive ci-dessus
+
+# 2. Créez le dossier models/ (si nécessaire)
+mkdir models
+
+# 3. Placez les fichiers téléchargés dans models/
+# Votre structure devrait être :
+# models/
+#   ├── cnn_scratch.keras
+#   └── efficientnet_final.keras
+
+# 4. Vérifiez que les modèles sont bien présents
+ls models/
+```
+
+### 🎯 Alternative : Réentraînement avec Google Colab
+
+Si vous préférez réentraîner les modèles vous-même avec GPU gratuit :
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Adjakim/cnn-simpsons-classifier/blob/main/notebooks/01_PROJET_MODELISATION.ipynb)
+
+ 🎓 Comprendre tout le processus
 ---
 
 ##  Installation et Démarrage
