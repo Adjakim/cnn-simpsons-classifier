@@ -1,0 +1,225 @@
+# ============================================================================
+# CONFIGURATION COMPLÈTE - CNN SIMPSONS CLASSIFIER
+# ============================================================================
+# Projet : Classification des personnages des Simpsons
+# Modeles : CNN Scratch + EfficientNetB0
+# Interface : React Frontend + Flask Backend API
+# Version : 2.0
+# Dernière mise à jour : Février 2026
+# ============================================================================
+
+# CHEMINS DU PROJET
+# ============================================================================
+paths:
+  base_dir: "A:/Mes documents/CNN"
+  
+  data:
+    raw: "data/raw/simpsons_dataset"
+    test_raw: "data/raw/kaggle_simpson_testset"
+    balanced: "data/balanced/simpsons_balanced"
+    processed:
+      train: "data/processed/train"
+      validation: "data/processed/validation"
+      test: "data/processed/test"
+  
+  models: "models"
+  outputs: "outputs"
+  frontend: "frontend-react"
+
+# PARAMÈTRES DES DONNÉES
+# ============================================================================
+data:
+  n_classes: 13
+  images_per_class: 850
+  train_val_split: 0.8
+  image_size: [224, 224]
+  batch_size: 32
+  random_seed: 42
+  stratified_sampling: true
+
+# CLASSES (13 PERSONNAGES)
+# ============================================================================
+classes:
+  - abraham_grampa_simpson
+  - bart_simpson
+  - charles_montgomery_burns
+  - chief_wiggum
+  - homer_simpson
+  - krusty_the_clown
+  - lisa_simpson
+  - marge_simpson
+  - milhouse_van_houten
+  - moe_szyslak
+  - ned_flanders
+  - principal_skinner
+  - sideshow_bob
+
+# DATA AUGMENTATION
+# ============================================================================
+augmentation:
+  rotation_range: 15
+  width_shift_range: 0.1
+  height_shift_range: 0.1
+  horizontal_flip: true
+  zoom_range: 0.2
+  brightness_range: [0.9, 1.1]
+  fill_mode: "nearest"
+
+# MODÈLE 1 : CNN FROM SCRATCH
+# ============================================================================
+cnn_scratch:
+  name: "SimpleCNN"
+  path: "models/cnn_scratch.keras"
+  accuracy: 0.8986
+  
+  # Architecture
+  filters: [32, 64, 128, 256]
+  kernel_size: [3, 3]
+  pool_size: [2, 2]
+  dense_units: 256
+  dropout_rate: 0.5
+  activation: "relu"
+  
+  # Entraînement
+  optimizer: "adam"
+  learning_rate: 0.001
+  loss: "categorical_crossentropy"
+  epochs: 15
+  patience: 5
+
+# MODÈLE 2 : TRANSFER LEARNING (EFFICIENTNET)
+# ============================================================================
+transfer_learning:
+  name: "EfficientNetB0"
+  path: "models/efficientnet_final.keras"
+  accuracy: 0.9819
+  
+  base_model: "EfficientNetB0"
+  input_shape: [224, 224, 3]
+  dense_units: 256
+  dropout_rate: 0.5
+  
+  # Phase 1 : Fine-tuning head only
+  phase1:
+    epochs: 8
+    learning_rate: 0.001
+    freeze_base: true
+  
+  # Phase 2 : Fine-tuning full model
+  phase2:
+    epochs: 12
+    learning_rate: 0.0001
+    unfreeze_layers: 100
+
+# CALLBACKS
+# ============================================================================
+callbacks:
+  early_stopping:
+    monitor: "val_loss"
+    patience: 5
+    restore_best_weights: true
+  
+  reduce_lr:
+    monitor: "val_loss"
+    factor: 0.5
+    patience: 3
+    min_lr: 0.00001
+  
+  model_checkpoint:
+    monitor: "val_accuracy"
+    save_best_only: true
+
+# MÉTRIQUES D'ÉVALUATION
+# ============================================================================
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+  top_k: 3
+
+# API BACKEND (FLASK)
+# ============================================================================
+api:
+  host: "0.0.0.0"
+  port: 5000
+  debug: true
+  cors_enabled: true
+  
+  # Endpoints
+  endpoints:
+    health: "/health"
+    predict: "/predict"
+    classes: "/classes"
+  
+  # Upload
+  upload:
+    max_file_size: 10485760  # 10 MB
+    allowed_extensions: ["jpg", "jpeg", "png"]
+  
+  # Modèles chargés au démarrage
+  models:
+    cnn:
+      enabled: true
+      path: "models/cnn_scratch.keras"
+    efficientnet:
+      enabled: true
+      path: "models/efficientnet_final.keras"
+
+# FRONTEND (REACT)
+# ============================================================================
+frontend:
+  url: "http://localhost:3000"
+  backend_api_url: "http://localhost:5000"
+  
+  # Paramètres UI
+  ui:
+    default_model: "efficientnet"
+    show_top_k: 3
+    enable_url_upload: true
+    enable_drag_drop: true
+  
+  # Assets
+  assets:
+    simpsons_image: "public/simpsons_family.jpg"
+
+# LOGGING ET MONITORING
+# ============================================================================
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  files:
+    backend: "logs/backend.log"
+    training: "logs/training.log"
+    predictions: "logs/predictions.log"
+
+# PERFORMANCES
+# ============================================================================
+performance:
+  use_gpu: false  # true si GPU CUDA disponible
+  num_threads: 4
+  mixed_precision: false
+  
+  # Cache
+  cache:
+    enabled: true
+    predictions: 100  # Nombre de prédictions en cache
+
+# SÉCURITÉ
+# ============================================================================
+security:
+  cors:
+    allowed_origins: ["http://localhost:3000"]
+  
+  rate_limiting:
+    enabled: false  # Activer en production
+    max_requests_per_minute: 60
+
+# ENVIRONNEMENT
+# ============================================================================
+environment:
+  name: "development"  # development | production
+  debug: true
+  testing: false

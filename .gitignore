@@ -1,0 +1,33 @@
+﻿# Environnements
+node_modules/
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environnement
+.env
+
+# EXCLUSIONS VOLUMINEUSES
+models/*.keras
+models/*.h5
+data/
+
+# Fichiers temporaires
+PROJECT_STRUCTURE.txt
+architecture_complete.txt

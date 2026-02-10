@@ -1,0 +1,22 @@
+CNN FROM SCRATCH - CLASSIFICATION REPORT
+
+
+                          precision    recall  f1-score   support
+
+  abraham_grampa_simpson     0.9162    0.9000    0.9080       170
+            bart_simpson     0.8121    0.7882    0.8000       170
+charles_montgomery_burns     0.8647    0.8647    0.8647       170
+            chief_wiggum     0.8939    0.9412    0.9169       170
+           homer_simpson     0.8675    0.8471    0.8571       170
+        krusty_the_clown     0.9581    0.9412    0.9496       170
+            lisa_simpson     0.7725    0.8588    0.8134       170
+           marge_simpson     0.9357    0.9412    0.9384       170
+     milhouse_van_houten     0.9529    0.9529    0.9529       170
+             moe_szyslak     0.8931    0.8353    0.8632       170
+            ned_flanders     0.9810    0.9118    0.9451       170
+       principal_skinner     0.9512    0.9176    0.9341       170
+            sideshow_bob     0.9027    0.9824    0.9408       170
+
+                accuracy                         0.8986      2210
+               macro avg     0.9001    0.8986    0.8988      2210
+            weighted avg     0.9001    0.8986    0.8988      2210

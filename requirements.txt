@@ -1,0 +1,30 @@
+# Requirements pour le projet CNN - Simpsons Classification
+# ==========================================================
+
+# Deep Learning
+tensorflow==2.15.0
+keras==2.15.0
+
+# Data manipulation
+numpy==1.24.3
+pandas==2.0.3
+
+# Image processing
+Pillow==10.0.0
+opencv-python==4.8.0.76
+
+# Visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+
+# Utilities
+PyYAML==6.0.1
+scikit-learn==1.3.0
+tqdm==4.66.1
+
+# Jupyter (pour les notebooks)
+jupyter==1.0.0
+ipykernel==6.25.1
+
+# Optional: Pour accélérer l'entraînement
+# tensorflow-gpu==2.15.0  # Si vous avez un GPU NVIDIA

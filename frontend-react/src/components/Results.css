@@ -1,0 +1,122 @@
+.result-section {
+  text-align: center;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.result-emoji {
+  font-size: 4em;
+  margin-bottom: 15px;
+  animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.result-title {
+  font-size: 2em;
+  color: #1a1a2e;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.result-confidence {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+}
+
+.confidence-label {
+  color: #6c757d;
+}
+
+.confidence-value {
+  color: #28a745;
+  font-weight: 700;
+}
+
+/* Top 3 Predictions */
+.top-predictions {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px 0;
+  text-align: left;
+}
+
+.predictions-title {
+  font-size: 1.2em;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.prediction-item {
+  margin-bottom: 15px;
+}
+
+.prediction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.prediction-name {
+  font-weight: 600;
+  color: #1a1a2e;
+  text-transform: capitalize;
+}
+
+.prediction-percent {
+  font-weight: 700;
+  color: #00A8E8;
+}
+
+.prediction-bar {
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.prediction-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00A8E8 0%, #0077be 100%);
+  border-radius: 10px;
+  transition: width 1s ease-out;
+}
+
+/* Retry Button */
+.retry-btn {
+  padding: 15px 40px;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-family: inherit;
+}
+
+.retry-btn:hover {
+  background: #0f0f1e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .result-title {
+    font-size: 1.5em;
+  }
+}

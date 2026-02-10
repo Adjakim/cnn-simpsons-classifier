@@ -1,0 +1,112 @@
+.App {
+  min-height: 100vh;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.simpsons-corner {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  z-index: 10;
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.simpsons-corner img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 30px;
+  padding: 40px;
+  position: relative;
+}
+
+/* Error Section */
+.error-section {
+  text-align: center;
+  padding: 40px;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.error-icon {
+  font-size: 4em;
+  margin-bottom: 15px;
+}
+
+.error-section h3 {
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.error-section p {
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.retry-btn {
+  padding: 15px 40px;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.retry-btn:hover {
+  background: #0f0f1e;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #6c757d;
+}
+
+.footer p {
+  margin: 10px 0;
+}
+
+.footer-tech {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tech-badge {
+  padding: 5px 15px;
+  background: #e9ecef;
+  border-radius: 20px;
+  font-size: 0.85em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .simpsons-corner {
+    width: 180px;
+  }
+}

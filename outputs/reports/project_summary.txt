@@ -1,0 +1,15 @@
+
+RÉSUMÉ FINAL DU PROJET - CNN SIMPSONS CLASSIFICATION
+
+
+Dataset utilisé      : 11,050 images (850/classe)
+Classes              : 13 personnages Simpsons
+Split                : 80% train (8,840) / 20% val (2,210)
+Modèles entraînés    : 2 (CNN Scratch + EfficientNetB0)
+
+RÉSULTATS:
+  CNN Scratch      : 89.86%
+  EfficientNetB0   : 98.19%
+  Gain TL          : +8.33%
+
+Meilleur modèle    : EfficientNetB0 (98.19%)
